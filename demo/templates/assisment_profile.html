@@ -1,0 +1,458 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+ 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+  
+
+</head>
+<body>
+  <div class="main_body ">
+	
+  <!--Nav bar-->
+  <nav class="navbar  navbar-expand-sm navbar-dark" style="background-color: rgba(33, 44, 63,0.98);">
+  <a class="navbar-brand" style="color:white" href="http://localhost:5000/" method = "POST">VincentStore</a>
+ 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+      
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+    <li class="nav-item">
+      
+       <a class="nav-link" style="color:white"  href="http://localhost:5000/aboutus" method = "POST">About Us & Guide</a>
+     
+    </li>
+    
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" style="color:white" herf="#" id="navbardrop "data-toggle="dropdown">Online Store</a>
+      <div class="dropdown-menu">
+        
+          <a class="dropdown-item" href="http://localhost:5000/drink" method = "POST">Drink</a>
+        </form>
+       
+          <a class="dropdown-item" href="http://localhost:5000/food" method = "POST">Food</a>
+        
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color:#b3e6ff;font-weight: bold; " href="http://localhost:5000/profile_page" method = "POST">My account</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color:white" href="http://localhost:5000/shopping_cart" method = "POST">Shopping cart</a>
+    </li>
+    </UL>
+  </div>  
+  </nav>
+
+
+<!-- header -->
+<header class="header_bg ">
+      {% for item in personal_detail %}
+      <h1 class="page_head" style="color: white"> WELCOME {{item[8]}} </h1>
+      {% endfor %}
+    
+</header>
+
+
+<!-- content -->
+<div class="main_content container-fluid"> 
+  
+  
+
+
+
+
+  <div class="row ">
+
+    <div class="col-12" >
+     
+      
+      <div id="user_info">
+        <br>
+        <h2>Personal data</h2>
+      <div class="user_personal" style="padding: 15px;"id="">
+        <a href="http://localhost:5000/logout" method = "POST"><h6>< Log out</h6></a>
+        <br>
+        {% for item in personal_detail %}
+        <div class="row">
+          <div class="col-sm-6">
+          <tr>
+            <td><h5 style="font-weight: bold">Customer ID: {{item[0]}}</h5></td>
+            <td><h5 style="font-weight: bold">Name: {{item[1]}} {{item[2]}}</h5></td>
+            
+            <td><h5 style="font-weight: bold">Username: {{item[8]}}</h5></td>
+            <td><h5 style="font-weight: bold">Password: {{item[9]}}</h5></td> 
+            <td><h5 style="font-weight: bold">Points: {{item[10]}}</h5></td> 
+          </tr>
+          </div>
+          <div class="col-sm-6">
+          <tr>
+            <td><h5>Sex: {{item[6]}}</h5></td>
+            <td><h5>Birth: {{item[7]}}</h5></td>
+            <td><h5>Phone: {{item[3]}}</h5></td>
+            <td><h5>Email: {{item[4]}}</h5></td>
+            <td><h5>Address: {{item[5]}}</h5></td>
+            
+
+          </tr>
+          </div>
+          <br>
+        </div>
+        
+        <br>
+        
+        <button class="btn btn-primary update_btn" onclick="update_fill()">Update</button>
+        <form  action = "http://localhost:5000/fir_name_update" method = "POST">
+          <div class="form-group update_content"style="align-content: center">
+            <p>First name:&nbsp; </p>
+            <div class="row" style="padding-left: 15px">
+              <input type="email" name="email_address" class="email_address"  value={{item[4]}}>
+              <input type="text" name="first_name_update" class="form-control" style="width:70%" value={{item[1]}} required>
+              <p>&nbsp;</p>
+              <button class="btn btn-primary" input="submit">Submit</button>
+            </div>
+          </div> 
+        </form> 
+        
+        <form  action = "http://localhost:5000/las_name_update" method = "POST">
+          <div class="form-group update_content"style="align-content: center">
+            <p>Last name:&nbsp; </p>
+            <div class="row"  style="padding-left: 15px">
+              <input type="email" name="email_address" class="email_address"  value={{item[4]}}>
+              <input type="text" name="last_name_update" class="form-control" style="width:70%"  value={{item[2]}} required>
+              <p>&nbsp;</p>
+              <button class="btn btn-primary" input="submit">Submit</button>
+            </div>
+          </div> 
+        </form> 
+
+        <form  action = "http://localhost:5000/phone_update" method = "POST">
+          <div class="form-group update_content"style="align-content: center">
+            <p>Phone number:&nbsp; </p>
+            <p id="phone_error" style="color:red"></p>
+            <div class="row"  style="padding-left: 15px">
+              
+              <input type="email" name="email_address" class="email_address"  value={{item[4]}}>
+              <input type="number" name="phone_update"  id="phone_update" class="form-control" min="10000000" max="99999999" style="width:70%"  oninput="phone_check()" value={{item[3]}} required> 
+              <p>&nbsp;</p>
+              <button class="btn btn-primary" input="submit" id="phone_submit">Submit</button>
+            </div>
+          </div> 
+        </form> 
+
+        <form  action = "http://localhost:5000/email_update" method = "POST">
+          <div class="form-group update_content"style="align-content: center">
+            <p>Email:&nbsp; </p>
+            <div class="row"  style="padding-left: 15px">
+              <input type="email" name="email_address" class="email_address"  value={{item[4]}}>
+              <input type="email" name="email_update" class="form-control" style="width:70%" value={{item[4]}} required>
+              <p>&nbsp;</p>
+              <button class="btn btn-primary" input="submit">Submit</button>
+            </div>
+          </div> 
+        </form> 
+
+        <form  action = "http://localhost:5000/address_update" method = "POST">
+          <div class="form-group update_content"style="align-content: center">
+            <p>Address:&nbsp; </p>
+            <div class="row"  style="padding-left: 15px">
+              <input type="email" name="email_address" class="email_address"  value={{item[4]}}>
+              <input type="text" name="address_update" class="form-control" style="width:70%" value={{item[5]}} required>
+              <p>&nbsp;</p>
+              <button class="btn btn-primary" input="submit">Submit</button>
+            </div>
+          </div> 
+        </form>
+
+        <form  action = "http://localhost:5000/usrn_update" method = "POST">
+          <div class="form-group update_content"style="align-content: center">
+            <p>User name:&nbsp; </p>
+            <div class="row"  style="padding-left: 15px">
+              <input type="email" name="email_address" class="email_address"  value={{item[4]}}>
+              <input type="text" name="usrn_update" class="form-control" style="width:70%" value={{item[8]}} required>
+              <p>&nbsp;</p>
+              <button class="btn btn-primary" input="submit">Submit</button>
+            </div>
+          </div> 
+        </form> 
+
+        <form  action = "http://localhost:5000/uspw_update" method = "POST">
+          <div class="form-group update_content"style="align-content: center">
+            <p>Password:&nbsp; </p>
+            <p id="invalid_password" style="color:red"></p>
+            <p id="invalid_password_len" style="color:red"></p>
+            <div class="row"  style="padding-left: 15px">
+              <input type="email" name="email_address" class="email_address"  value={{item[4]}}>
+              <input type="password" name="password_update" id="password_update" class="form-control" oninput="pw_check()" style="width:70%"  required>
+              
+              <p>&nbsp;</p>
+              
+            </div>
+            <br>
+            <p>Password confirm:&nbsp; </p>
+            <p id="invalid_password_cf" style="color:red"></p>
+            <div class="row"  style="padding-left: 15px">
+              
+              <input type="password" name="password_confirm_update" id="password_confirm_update" class="form-control" oninput="pw_confirm_check()" style="width:70%" required>
+              <p>&nbsp;</p>
+              <button class="btn btn-primary" input="submit" id="pw_update_submit">Submit</button>
+            </div>
+          </div> 
+        </form> 
+        
+        {% endfor %}
+      </div>
+      <br>
+
+
+      
+
+
+    
+      
+    
+  
+  <div class="row " style="padding: 5px">
+    
+
+    <div class="col-12" >
+      
+      <h2 id="heading_pd">Purchase record</h2>
+      <div id="list_of_product">
+      
+     
+      
+      </div>
+      
+      {% for item in pd_list %}
+      
+      <div class="product"  style="padding: 5px;">
+        <div class="row">
+          <div class="col-sm-4 col-xl-2 ">
+            <img src="/static/img/product/{{item[0]}}.jpeg" class="product_photo" style=" height: 100% ;width:100%;  max-width: 200px; max-height: 200px">
+          </div>
+          <div class="col-sm-8 col-xl-10 ">
+            <tr>
+                <td><h5>Shopping record ID: {{item[9]}}</h5></td>
+                <br>
+                <td><h5>Product ID: {{item[0]}}</h5></td>
+                <td><h4 style="font-weight: bold">{{item[1]}}</h4></td>
+                <td><h6>Brand: {{item[2]}}</h6></td>
+                <td><h6>Drink catagory: {{item[6]}}</h6></td>
+               
+                <td><h5 style="font-weight: bold">Unit price: ${{item[3]}}</h5></td>
+                <td><h5 style="font-weight: bold">Quantity: {{item[7]}}</h5></td>
+               
+                <td><h5 style="font-weight: bold; color:#0039e6">Total price: ${{item[8]}}</h5></td>
+                <br>
+                <td><h5>Date: {{item[10]}}</h5></td>
+                <td><h5>Time: {{item[11]}}</h5></td>
+                <td><h5>Delivery: {{item[10]}} - {{item[12]}}</h5></td>
+                
+                
+                <form action = "http://localhost:5000/remove" method = "POST">
+                  
+                  
+                  
+                  <input type="text" value="{{item[0]}}" name="product_id" class="product_id_text">
+                  <input type="text" value="{{item[7]}}" name="product_qty" class="product_id_text">
+                  <input type="text" value="{{item[9]}}" name="cart_id" class="product_id_text">
+                </form>
+              </tr>
+              <br>
+        
+
+        </div>
+        </div>
+        
+      </div>
+      <br>
+      {% endfor %}
+      
+      
+
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+  
+  
+
+</div> 
+</div> 
+</div>
+    
+ 
+    
+
+
+<!-- Footer -->
+<div class="main_body">
+<footer class="page-footer font-small container-fluid" style="background-color:#cccccc; color:#4d4d4d" >
+  
+  <div class="row" style="padding-left: 5px">
+    <div class = "col-2" style="">
+     
+      
+    </div>
+     <div class = "col-2"> 
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px;">Purchase</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/drink" method = "POST" >Drink</a><br>
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/food" method = "POST" >Food</a><br>
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">Account</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/profile_page" method = "POST">My account</a><br>
+      
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/shopping_cart" method = "POST" >Shopping cart</a><br>
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">About us</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/aboutus" method = "POST">About us & Guide</a><br>
+        
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">News</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/" >Recent update</a><br>
+        
+      </p>
+    </div>
+    <div class = "col-2" style="">
+      
+    </div>
+  </div>
+  
+  
+
+</footer>
+</div>
+
+<button class="float_btn btn-secondary"  onclick="gototop()">^</button>
+
+<footer class="page-footer font-small " style="background-color:#002769; color:white; font-size:12px">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright: VincentStore
+  </div>
+  
+
+</footer>
+<!-- Footer -->
+</div>
+
+
+<script type="text/javascript">
+
+$(".product_id_text").hide();
+
+$(".update_content").hide();
+$(".email_address").hide();
+
+
+
+function phone_check() {
+  var phone=document.getElementById("phone_update").value;
+  
+  if (phone.length!== 8){
+    document.getElementById("phone_error").innerHTML = "Should be 8 digit";
+    $("#phone_submit").hide()
+  }else{
+    document.getElementById("phone_error").innerHTML = "";
+    $("#phone_submit").show()
+  }
+}
+
+function pw_check(){
+
+  var usr_pw = document.getElementById("password_update").value;
+  var pw_check_identify=false;
+  var pw_check_identify2=false;
+  var check_include_num=/\d/;
+  var check_include_char=/[A-Z]/i;
+
+  $("#pw_update_submit").hide()
+
+  if(pw_check_identify==false){
+    document.getElementById("invalid_password").innerHTML = "Must contain letters (A-Z/a-z) and numbers (0-9)";
+  }
+
+  if (usr_pw.match("^[a-zA-Z0-9]+$")){
+      if(usr_pw.match(check_include_num)){
+        if(usr_pw.match(check_include_char)){
+        
+         pw_check_identify=true;
+        
+        }
+      } 
+    } 
+
+
+
+  if(usr_pw.length<8){
+      document.getElementById("invalid_password_len").innerHTML = "Must at least 8 characters in length";
+        
+    } else{document.getElementById("invalid_password_len").innerHTML = "";
+      pw_check_identify2=true}
+
+  if((pw_check_identify2==true)&&(pw_check_identify==true)){
+    $("#pw_update_submit").show()
+    document.getElementById("invalid_password").innerHTML = "";
+    document.getElementById("invalid_password_len").innerHTML = "";
+  }
+   
+}
+
+
+function pw_confirm_check(){
+  var usr_pw = document.getElementById("password_update").value;
+  var usr_pw_confirm = document.getElementById("password_confirm_update").value;
+
+  if (usr_pw !== usr_pw_confirm){
+    document.getElementById("invalid_password_cf").innerHTML = "Passwords are not same";
+    $("#pw_update_submit").hide()
+  }else{
+    $("#pw_update_submit").show()
+    document.getElementById("invalid_password_cf").innerHTML = "";
+  }
+}
+
+
+
+
+function update_fill(){
+  $(".update_content").show();
+  $(".update_btn").hide();
+}
+
+function gototop() {
+   $("html, body").animate({ scrollTop: 0 }, 300);
+}
+</script>
+
+
+</body>
+</html>

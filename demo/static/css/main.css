@@ -1,0 +1,132 @@
+.main_carousel{ 
+	width:100%;
+	margin:auto; 
+	text-align:center; 
+	}
+
+.main_button{
+	background-color: #3399ff ; 
+	height: 40%;
+	
+}
+
+.main_body{
+	background-color: #f2f2f2;
+}
+
+.main_content{
+	padding: 10px;
+}
+
+.page_head{
+	font-weight: bold;
+	font-style: italic;
+}
+
+.columnbetween {
+	
+	height:10px;
+	width:100%;
+	background-color: white; 
+	padding:0px
+
+}
+
+.top{
+	background-color: #f1f1f1; 
+	width: 900px;
+	padding-bottom: 10px
+	
+}
+
+.Quantity_box{
+	width:90px;
+	height: 39px; 
+	border-color: #0073e6;
+	border-radius:5px;
+	box-shadow: 1px 1px 5px #a6a6a6;
+	
+	color: black;
+
+}
+
+
+
+.login_content,.product,.update_content {
+	background-color: white;
+	border-radius:5px;
+	padding: 5px;
+	box-shadow: 1px 1px 5px #cccccc;
+}
+
+
+.aboutus_content{
+	background-color: white;
+	border-radius:5px;
+	padding: 5px;
+	font-size: 18px;
+	text-align: center;
+	box-shadow: 1px 1px 5px #cccccc;
+}
+
+.user_personal{
+	background-color: white;
+	border-radius:5px;
+	box-shadow: 1px 1px 5px #cccccc;
+
+
+}
+
+.float_btn{
+	position:fixed; 
+	width:55px;
+  	height:55px;
+  	bottom:65px;
+  	right:10px;
+  	border-radius:5px;
+  	text-align:center;
+  	font-size:  43px;
+	background: transparent ;
+	opacity:0.6;
+	box-shadow: 1px 1px 5px #404040;
+  
+}
+
+.header_bg{
+	height:100px;
+	width:100%;
+	background-image: url(../img/header_bg.png);
+	background-size: cover;
+	
+  	
+}
+
+.header_bg_staff{
+	height:100px;
+	width:100%;
+	background-image: url(../img/header_bg_staff.jpeg);
+	background-size: cover;
+	
+  	
+}
+
+
+.btn{
+	box-shadow: 1px 1px 5px #a6a6a6;
+}
+
+.page_head{
+	padding-left: 10px;
+	padding-top: 50px;	
+	
+}
+
+.product_photo{
+	border-width: 5px;
+	border-radius:10%;
+	padding: 15px;
+}
+
+
+
+

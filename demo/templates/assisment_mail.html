@@ -1,0 +1,128 @@
+<!DOCTYPE html> 
+
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  
+
+
+  
+
+</head>
+<body>
+
+<div class="main_content" style="background-color:#f2f2f2;padding: 15px "> 
+  <h2 id="heading_pd">VincentStore Offical Receipt </h2>
+  
+
+    
+    
+    
+      
+      <div class="product"  style="padding: 15px;background-color: white;border-radius:5px;padding: 5px;box-shadow: 1px 1px 5px #cccccc;">
+        <div class="row">
+         
+          <div class="col-12" style="">
+            
+            
+            <p></p>
+            <table  class=" " style="width:100%; text-align: center ;padding: 5px">
+              
+              
+              <tr>
+                <th >Product ID</th>
+                <th >Product Name</th>
+                <th >Quantity</th>
+                <th >Price ($)</th>
+              </tr>
+              {% for item in pd_list %}
+              <tr>
+                <td>{{item[0]}}</td>
+                <td>{{item[2]}} {{item[1]}}</td>
+                <td>{{item[7]}}</td>
+                <td>{{item[3]}}</td>
+                
+              </tr>
+
+              {% endfor %}
+              <tr>
+                <th><br></th>
+                
+              </tr>
+              <tr>
+                <th>Total:</th>
+                <th></th>
+                <th></th>
+                <th>${{sum}}</th>
+              </tr>
+              
+              <tr>
+                <th><br></th>
+                
+              </tr>
+
+              <tr>
+                <td>Date:</td>
+                <td></td>
+                <td></td>
+                <td>{{date}}</td>
+              </tr>
+              <tr>
+                <td>Time:</td>
+                <td></td>
+                <td></td>
+                <td>{{time}}</td>
+              </tr>
+              <tr>
+                <td>Delivery:</td>
+                <td></td>
+                <td></td>
+                <td>{{date}} - {{delivery2}}</td>
+              </tr>
+              <tr>
+                <th><br></th>
+                
+              </tr>
+              <tr>
+                <td>Customer ID:</td>
+                <td></td>
+                <td></td>
+                <td>{{cusid}}</td>
+              </tr>
+              <tr>
+                <td>Points earned:</td>
+                <td></td>
+                <td></td>
+                <td>{{earn}}</td>
+              </tr>
+              <tr>
+                <th>Total points:</th>
+                <td></td>
+                <td></td>
+                <th>{{cuspt}}</th>
+              </tr>
+            </table>
+              <br>
+              
+          </div>
+        </div>
+      </div>
+      <br>
+        
+
+   
+    </div>
+    </div>
+  </div>
+  </div>
+</div> 
+
+<h6>Please don't reply this email </h6>
+<h6>© 2019 Copyright: VincentStore</h6>
+<body>

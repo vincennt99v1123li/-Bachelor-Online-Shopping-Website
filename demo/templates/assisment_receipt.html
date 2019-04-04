@@ -1,0 +1,262 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+ 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+  
+
+</head>
+<body>
+
+
+  
+
+
+
+
+	<div class="main_body">
+  <!--Nav bar-->
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: rgba(33, 44, 63,0.98);">
+  <a class="navbar-brand" style="color:white" href="http://localhost:5000/" method = "POST">VincentStore</a>
+ 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+      
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+    <li class="nav-item">
+      
+       <a class="nav-link" style="color:white"  href="http://localhost:5000/aboutus" method = "POST">About Us & Guide</a>
+     
+    </li>
+    
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" style="color:white" herf="#" id="navbardrop "data-toggle="dropdown">Online Store</a>
+      <div class="dropdown-menu">
+        
+          <a class="dropdown-item" href="http://localhost:5000/drink" method = "POST">Drink</a>
+        </form>
+       
+          <a class="dropdown-item" href="http://localhost:5000/food" method = "POST">Food</a>
+        
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color:white" href="http://localhost:5000/login_page" method = "POST">My account</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" style="color:white" href="http://localhost:5000/login_page" method = "POST">Shopping cart</a>
+    </li>
+
+    </UL>
+  </div>  
+  </nav>
+
+
+<!-- header -->
+<header class="header_bg">
+    <h1 class="page_head" style="color: white"> THANK YOU  </h1>
+    
+  </header>
+
+
+<!-- content -->
+<br>
+<div class="main_content"> 
+  <h2 id="heading_pd">Receipt </h2>
+  <p style="">A receipt has been sent to your email account</p>
+
+    
+    
+    
+      
+      <div class="product"  style="padding: 5px;">
+        <div class="row">
+         
+          <div class="col-12" style="">
+            
+            
+            <p></p>
+            <table  class=" " style="width:100%; text-align: center ;">
+              
+              
+              <tr>
+                <th >Product ID</th>
+                <th >Product Name</th>
+                <th >Quantity</th>
+                <th >Price ($)</th>
+              </tr>
+              {% for item in pd_list %}
+              <tr>
+                <td>{{item[0]}}</td>
+                <td>{{item[2]}} {{item[1]}}</td>
+                <td>{{item[7]}}</td>
+                <td>{{item[3]}}</td>
+                
+              </tr>
+
+              {% endfor %}
+              <tr>
+                <th><br></th>
+                
+              </tr>
+              <tr>
+                <th>Total:</th>
+                <th></th>
+                <th></th>
+                <th>${{sum}}</th>
+              </tr>
+              
+              <tr>
+                <th><br></th>
+                
+              </tr>
+
+              <tr>
+                <td>Date:</td>
+                <td></td>
+                <td></td>
+                <td>{{date}}</td>
+              </tr>
+              <tr>
+                <td>Time:</td>
+                <td></td>
+                <td></td>
+                <td>{{time}}</td>
+              </tr>
+              <tr>
+                <td>Delivery:</td>
+                <td></td>
+                <td></td>
+                <td>{{date}} - {{delivery2}}</td>
+              </tr>
+              <tr>
+                <th><br></th>
+                
+              </tr>
+              <tr>
+                <td>Customer ID:</td>
+                <td></td>
+                <td></td>
+                <td>{{cusid}}</td>
+              </tr>
+              <tr>
+                <td>Points earned:</td>
+                <td></td>
+                <td></td>
+                <td>{{earn}}</td>
+              </tr>
+              <tr>
+                <th>Total points:</th>
+                <td></td>
+                <td></td>
+                <th>{{cuspt}}</th>
+              </tr>
+            </table>
+              <br>
+              
+          </div>
+        </div>
+      </div>
+      <br>
+        
+
+   
+    </div>
+    </div>
+  </div>
+  </div>
+</div> 
+
+
+<!-- Footer -->
+<div class="main_body">
+<footer class="page-footer font-small container-fluid" style="background-color:#cccccc; color:#4d4d4d" >
+  
+  <div class="row" style="padding-left: 5px">
+    <div class = "col-2" style="">
+     
+      
+    </div>
+     <div class = "col-2"> 
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px;">Purchase</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/drink" method = "POST" >Drink</a><br>
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/food" method = "POST" >Food</a><br>
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">Account</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/profile_page" method = "POST">My account</a><br>
+      
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/shopping_cart" method = "POST" >Shopping cart</a><br>
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">About us</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/aboutus" method = "POST">About us & Guide</a><br>
+        
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">News</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/" >Recent update</a><br>
+        
+      </p>
+    </div>
+    <div class = "col-2" style="">
+      
+    </div>
+  </div>
+  
+  
+
+</footer>
+</div>
+<footer class="page-footer font-small " style="background-color:#002769; color:white; font-size:12px">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright: VincentStore
+  </div>
+  
+
+</footer>
+<!-- Footer -->
+</div>
+
+
+
+<script type="text/javascript">
+
+  function login(){
+    var usr_id=document.getElementById("Username").value
+    var usr_pw=document.getElementById("pwd").value
+
+    if ((usr_id=="test")&&(usr_pw=="123456")){
+      window.open("assisment_profile.html","_self");
+    }else{
+      document.getElementById("incorrect").innerHTML="Incorrect Username or Password"
+    }
+  }
+</script>
+
+
+</body>
+</html>

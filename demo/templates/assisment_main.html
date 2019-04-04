@@ -1,0 +1,201 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+  
+
+</head>
+<body>
+	<!--Nav bar-->
+	<nav class="navbar sticky-top navbar-expand-sm navbar-dark" style="background-color: rgba(33, 44, 63,0.98);">
+	<a class="navbar-brand" style="color:white ;font-weight:bold;" href="http://localhost:5000/" method = "POST">VincentStore</a>
+ 
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  	</button>
+  		
+  	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+  		<ul class="navbar-nav">
+		<li class="nav-item">
+      
+			 <a class="nav-link" style="color:white"  href="http://localhost:5000/aboutus" method = "POST">About Us & Guide</a>
+     
+		</li>
+		
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" style="color:white" herf="#" id="navbardrop "data-toggle="dropdown">Online Store</a>
+			<div class="dropdown-menu">
+        
+				  <a class="dropdown-item" href="http://localhost:5000/drink" method = "POST">Drink</a>
+        </form>
+       
+				  <a class="dropdown-item" href="http://localhost:5000/food" method = "POST">Food</a>
+        
+			</div>
+		</li>
+    <li class="nav-item">
+      <a class="nav-link" style="color:white" href="http://localhost:5000/login_page" method = "POST">My account</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" style="color:white" href="http://localhost:5000/shopping_cart" method = "POST">Shopping cart</a>
+    </li>
+
+		</UL>
+	</div>  
+	</nav>
+
+	<!--carosel-->
+  <form action = "http://localhost:5000/drink" method = "POST">
+  
+</form>
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+    <li data-target="#demo" data-slide-to="3"></li>
+    <li data-target="#demo" data-slide-to="4"></li>
+    <li data-target="#demo" data-slide-to="5"></li>
+    <li data-target="#demo" data-slide-to="6"></li>
+   
+
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner" style="background-color: white; box-shadow: 1px 1px 5px #cccccc;">
+    <div class="row">
+      <div class="col-lg-2 col-md-1"></div>
+      <div class="col-lg-8 col-md-10">
+  	   <div class="carousel-item active ">
+        <a href="http://localhost:5000/aboutus" method = "POST"><img src="/static/img/grand_open3.jpeg" class="main_carousel"  alt="grand open 1"  ></a>
+      </div>
+      <div class="carousel-item ">
+        <a  href="http://localhost:5000/food" method = "POST"><img src="/static/img/gEJFfsiRTuyoCiPWy+EWYw_thumb_97d.jpg" class="main_carousel" alt="cup noodle on sale" ></a>
+      
+      </div>
+      <div class="carousel-item">
+        <a  href="http://localhost:5000/aboutus" method = "POST"><img src="/static/img/grand_open2.jpeg" class="main_carousel"  alt="grand open 2" ></a>
+      </div>
+      <div class="carousel-item">
+        <a  href="http://localhost:5000/tea" method = "POST"><img src="/static/img/VLT_on_sale.jpeg" class="main_carousel" alt="VLT on sale" ></a>
+      </div>
+      <div class="carousel-item">
+        <a  href="http://localhost:5000/aboutus" method = "POST"><img src="/static/img/login_purchase1.jpeg" class="main_carousel"  alt="login purchase 1" ></a>
+      </div>
+      <div class="carousel-item">
+        <a  href="http://localhost:5000/aboutus" method = "POST"><img src="/static/img/login_purchase2.jpeg" class="main_carousel"  alt="login purchase 2" ></a>
+      </div>
+      <div class="carousel-item">
+        <a  href="http://localhost:5000/aboutus" method = "POST"><img src="/static/img/delivery.jpg" class="main_carousel"  alt="Delivery" ></a>
+      </div>
+      </div>
+    </div>
+    
+    
+  </div>
+  
+  <!-- Left and right controls -->
+
+ 
+  <a class="carousel-control-prev main_button"  style=" top:30% ;  " href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next main_button"  style=" top:30%;" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div>
+
+ 
+<!--recent update-->
+<div class="main_body">
+<div class="main_content">
+  <br>
+  <h2>Recent update</h2>
+  <div class="update_content">
+    <br>
+    <p> 3/4/2019 About us & Guide Updated
+    </p>
+    <p>3/3/2019 Grand Opening   </p>
+    
+    <p></p>
+  </div>
+  <br>
+</div>
+</div>
+<!-- Footer -->
+<div class="main_body">
+<footer class="page-footer font-small container-fluid" style="background-color:#cccccc; color:#4d4d4d" >
+  
+  <div class="row" style="padding-left: 5px">
+    <div class = "col-2" style="">
+     
+      
+    </div>
+     <div class = "col-2"> 
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px;">Purchase</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/drink" method = "POST" >Drink</a><br>
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/food" method = "POST" >Food</a><br>
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">Account</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/profile_page" method = "POST">My account</a><br>
+      
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/shopping_cart" method = "POST" >Shopping cart</a><br>
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">About us</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/aboutus" method = "POST">About us & Guide</a><br>
+        
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">News</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/" >Recent update</a><br>
+        
+      </p>
+    </div>
+    <div class = "col-2" style="">
+     
+      
+    </div>
+  </div>
+  
+  
+
+</footer>
+</div>
+<footer class="page-footer font-small " style="background-color:#002769; color:white; font-size:12px">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright: VincentStore
+  </div>
+  
+
+</footer>
+<!-- Footer -->
+
+</body>
+</html>

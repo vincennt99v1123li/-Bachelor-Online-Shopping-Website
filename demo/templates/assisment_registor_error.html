@@ -1,0 +1,333 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+  
+
+</head>
+<body>
+
+
+  
+
+
+
+  <div class="main_body">
+	<!--Nav bar-->
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark" style="background-color: rgba(33, 44, 63,0.98);">
+  <a class="navbar-brand" style="color:white" href="http://localhost:5000/" method = "POST">VincentStore</a>
+ 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+      
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+    <li class="nav-item">
+      
+       <a class="nav-link" style="color:white"  href="http://localhost:5000/aboutus" method = "POST">About Us & Guide</a>
+     
+    </li>
+    
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" style="color:white" herf="#" id="navbardrop "data-toggle="dropdown">Online Store</a>
+      <div class="dropdown-menu">
+        
+          <a class="dropdown-item" href="http://localhost:5000/drink" method = "POST">Drink</a>
+        </form>
+       
+          <a class="dropdown-item" href="http://localhost:5000/food" method = "POST">Food</a>
+        
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color:#b3e6ff;font-weight: bold;" href="http://localhost:5000/register_page" method = "POST">My account</a>
+    </li>
+
+    </UL>
+  </div>  
+  </nav>
+
+
+<!-- header -->
+<header class="header_bg">
+    <h1 class="page_head" style="color: white"> Register </h1>
+
+    
+</header>
+
+
+
+
+<!-- content -->
+<form action = "http://localhost:5000/register" method = "POST">
+<div class="main_content"> 
+
+  <div class="login_content">
+
+  <div class="container" style="margin-top:5px">
+    <div class="row">
+    <div class="col-12">
+
+    
+    <p><a href="http://localhost:5000/login_page" method = "POST" > < Log in </a></p>
+    
+    <div class="form-group ">
+      
+      <label for="first_name">First name:</label>
+      <p id="invalid_firstname" style="color:red"></p>
+      <input type="text" class="form-control" id="first_name" name="first_name" value={{fir_nam}} required>
+      
+    </div>
+
+    <div class="form-group ">
+      
+      <label for="last_name">Last name:</label>
+      <p id="invalid_lastname" style="color:red"></p>
+      <input type="text" class="form-control" id="last_name" name="last_name" value={{las_nam}} required>
+      
+    </div>
+
+    <div class="form-group ">
+      
+      <label for="sex">Sex:</label>
+      <br>
+      <select name="sex" id="sex" class="form-control" name="sex" value={{sex_choice}}>
+        <option value="N/A">N/A</option>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+  
+      </select>
+      
+    </div>
+
+    <div class="form-group ">
+      
+
+      <label for="birth">Date of birth:</label>
+     
+      <label for="birth" style="font-size: 12px">(dd/mm/yyyy)</label> 
+      <p id="invalid_birth" style="color:red"></p>
+      <input type="date" class="form-control" id="birth" name="birth" value={{birth_date}} required>
+      
+    </div>
+
+
+    <div class="form-group ">
+      
+      <label for="email">Email:</label>
+      <p id="invalid_email" style="color:red">{{error_email}}</p>
+      <input type="email" class="form-control" id="email" name="email" value={{email_address}} required>
+
+    </div>
+
+    <div class="form-group ">
+      
+      <label for="phone">Phone number:</label>
+      <label for="phone" style="font-size: 12px">(Your phone number should be a Hong Kong phone number)</label>
+      <p id="invalid_phone" style="color:red">{{error_phone}}</p>
+      <input type="number" class="form-control" min="10000000" max="99999999" oninput="phone_check()" id="phone" name="phone" value={{phone_no}} required>
+      
+    </div>
+
+    <div class="form-group ">
+      
+      <label for="address">Address:</label>
+      <p id="invalid_address" style="color:red"></p>
+      <input type="text" class="form-control" id="address" name="address" value={{home_address}} required>
+      
+    </div>
+
+    <div class="form-group ">
+      
+      <label for="Username">Username:</label>
+      <p id="invalid_user_name" style="color:red">{{error_usrn}}</p>
+      <input type="text" class="form-control" id="Username" name="Username" value={{usrn}} required>
+      
+    </div>
+
+
+    <div class="form-group ">
+     
+      <label for="pwd">Password:</label>
+      
+      <label for="pwd" style="font-size: 12px">(Your password must be at least 8 characters in length & contain letters (A-Z/a-z) and numbers (0-9))</label> 
+      <p id="invalid_password" style="color:red"></p>
+      <p id="invalid_password_len" style="color:red"></p>
+      <input type="password" class="form-control" id="pwd" name="pwd" value={{uspw}} oninput="pw_check()"required>
+      
+    </div>
+    
+    <div class="form-group ">
+      
+      <label for="pwd_confirm">Confirm password:</label>
+      <p id="invalid_password_cf" style="color:red"></p>
+      <input type="password" class="form-control" id="pwd_confirm" name="pwd_confirm" value={{uspw}} oninput="pw_confirm_check()"required>
+      
+    </div>
+
+    <div class="form-group ">
+      
+     
+      <p id="invalid_box_check" style="color:red"></p>
+      <input type="checkbox" value="agree" id="agree_confirm" name="agree_confirm" required>&nbsp;Agree VincentStore to use your data.
+      
+    </div>
+
+    
+    <Button type="submit" class="btn btn-primary" id="register_submit">Submit</Button>
+    <p></p>
+    </div>
+    </div>
+  </div>
+  </div>
+</div> 
+</form>
+
+<!-- Footer -->
+<div class="main_body">
+<footer class="page-footer font-small container-fluid" style="background-color:#cccccc; color:#4d4d4d" >
+  
+  <div class="row" style="padding-left: 5px">
+    <div class = "col-2" style="">
+     
+      
+    </div>
+     <div class = "col-2"> 
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px;">Purchase</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/drink" method = "POST" >Drink</a><br>
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/food" method = "POST" >Food</a><br>
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">Account</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/profile_page" method = "POST">My account</a><br>
+      
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/shopping_cart" method = "POST" >Shopping cart</a><br>
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">About us</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/aboutus" method = "POST">About us & Guide</a><br>
+        
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">News</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/" >Recent update</a><br>
+        
+      </p>
+    </div>
+    <div class = "col-2" style="">
+     
+      
+    </div>
+  </div>
+  
+  
+
+</footer>
+</div>
+<footer class="page-footer font-small " style="background-color:#002769; color:white;font-size:12px">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3"> © 2019 Copyright: VincentStore
+  </div>
+  
+
+</footer>
+<!-- Footer -->
+</div>
+
+
+
+<script type="text/javascript">
+  function phone_check() {
+  var phone=document.getElementById("phone").value;
+  
+  if (phone.length!== 8){
+    document.getElementById("invalid_phone").innerHTML = "Should be 8 digit";
+    $("#register_submit").hide()
+  }else{
+    document.getElementById("invalid_phone").innerHTML = "";
+    $("#register_submit").show()
+    }
+  }
+
+
+function pw_check(){
+
+  var usr_pw = document.getElementById("pwd").value;
+  var pw_check_identify=false;
+  var pw_check_identify2=false;
+  var check_include_num=/\d/;
+  var check_include_char=/[A-Z]/i;
+
+  $("#register_submit").hide()
+
+  if(pw_check_identify==false){
+    document.getElementById("invalid_password").innerHTML = "Must contain letters (A-Z/a-z) and numbers (0-9)";
+  }
+
+  if (usr_pw.match("^[a-zA-Z0-9]+$")){
+      if(usr_pw.match(check_include_num)){
+        if(usr_pw.match(check_include_char)){
+        
+         pw_check_identify=true;
+        
+        }
+      } 
+    } 
+
+
+
+  if(usr_pw.length<8){
+      document.getElementById("invalid_password_len").innerHTML = "Must at least 8 characters in length";
+        
+    } else{document.getElementById("invalid_password_len").innerHTML = "";
+      pw_check_identify2=true}
+
+  if((pw_check_identify2==true)&&(pw_check_identify==true)){
+    $("#register_submit").show()
+    document.getElementById("invalid_password").innerHTML = "";
+    document.getElementById("invalid_password_len").innerHTML = "";
+  }
+   
+}
+
+
+function pw_confirm_check(){
+  var usr_pw = document.getElementById("pwd").value;
+  var usr_pw_confirm = document.getElementById("pwd_confirm").value;
+
+  if (usr_pw !== usr_pw_confirm){
+    document.getElementById("invalid_password_cf").innerHTML = "Passwords are not same";
+    $("#register_submit").hide()
+  }else{
+    $("#register_submit").show()
+    document.getElementById("invalid_password_cf").innerHTML = "";
+  }
+}
+
+</script>
+
+
+</body>
+</html>

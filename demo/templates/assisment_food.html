@@ -1,0 +1,307 @@
+<!DOCTYPE html> 
+
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+ 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+
+
+  
+
+</head>
+<body>
+  <div class="main_body">
+  <!--Nav bar-->
+  <nav class="navbar  navbar-expand-sm navbar-dark" style="background-color: rgba(33, 44, 63,0.98);">
+  <a class="navbar-brand" style="color:white" href="http://localhost:5000/" method = "POST">VincentStore</a>
+ 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+      
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+    <li class="nav-item">
+      
+       <a class="nav-link" style="color:white "  href="http://localhost:5000/aboutus" method = "POST">About Us & Guide</a>
+     
+    </li>
+    
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" style="color:#b3e6ff;font-weight: bold; " herf="#" id="navbardrop "data-toggle="dropdown">Online Store</a>
+      <div class="dropdown-menu">
+        
+          <a class="dropdown-item" href="http://localhost:5000/drink" method = "POST"  >Drink</a>
+        
+       
+          <a class="dropdown-item" href="http://localhost:5000/food" method = "POST" style="color:#004de6; font-weight: bold;">Food</a>
+        
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color:white" href="http://localhost:5000/login_page" method = "POST">My account</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" style="color:white" href="http://localhost:5000/shopping_cart" method = "POST">Shopping cart</a>
+    </li>
+    </UL>
+  </div>  
+  </nav>
+
+
+<!--header-->
+
+<header class="header_bg">
+
+    <h1 class="page_head" style="color: white; "> Food </h1>
+    
+</header>
+
+  {{test1}}
+    <br>
+    <div class="main_content container-fluid">
+    <nav class="navbar sticky-top navbar-expand-* navbar-dark "  style="background-color: rgba(0,0,0,0.82);  border-radius:5px; padding: 5px; box-shadow: 1px 1px 5px #b3b3b3;  ">
+        <a class="navbar-brand" style="color:white; padding: 5px"id="filter_bar_head" >Filter: {{food_filter}}</a>
+ 
+        <button class="navbar-toggler  " type="button" data-toggle="collapse" data-target="#filter_bar">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse " id="filter_bar">
+
+          <div class="btn-group " style="margin-top: 5px; padding: 5px;">
+            <form action = "http://localhost:5000/food" method = "POST">
+              <button class="btn btn-secondary nav-item" style="border-bottom:5px; box-shadow: 0px 0px 0px #a6a6a6;" onclick="">All</button>
+            </form>
+          </div>
+
+          <div class="btn-group " style="margin-top: 5px; padding: 5px;">
+            <form action = "http://localhost:5000/bread" method = "POST">
+              <button class="btn btn-secondary nav-item" style="border-bottom:5px; box-shadow: 0px 0px 0px #a6a6a6;" onclick="">Bread</button>
+            </form>
+          </div>  
+          <div class="btn-group " style="margin-top: 5px; padding: 5px;">
+            <form action = "http://localhost:5000/cup_noodle" method = "POST">
+              <button class="btn btn-secondary nav-item" style="border-bottom:5px; box-shadow: 0px 0px 0px #a6a6a6;" onclick="">Cup noodle</button>
+            </form>
+          </div>
+
+          <div class="btn-group " style="margin-top: 5px; padding: 5px;">
+            <form action = "http://localhost:5000/frozen" method = "POST">
+              <button class="btn btn-secondary nav-item" style="border-bottom:5px; box-shadow: 0px 0px 0px #a6a6a6;" onclick="">Frozen food</button>
+            </form>
+          </div>
+          
+          
+          <div class="btn-group " style="margin-top: 5px; padding: 5px;">
+            <form action = "http://localhost:5000/ice_cream" method = "POST">
+              <button class="btn btn-secondary nav-item" style="border-bottom:5px; box-shadow: 0px 0px 0px #a6a6a6;" onclick="">Ice cream</button>
+            </form>
+          </div>
+          <div class="btn-group " style="margin-top: 5px; padding: 5px;">
+            <form action = "http://localhost:5000/snacks" method = "POST">
+              <button class="btn btn-secondary nav-item" style="border-bottom:5px; box-shadow: 0px 0px 0px #a6a6a6;" onclick="">Snacks</button>
+            </form>
+          </div>
+          
+
+          <form action = "http://localhost:5000/search_food_price" method = "POST">
+          <div class="btn-group " style="margin-top: 21px; padding: 5px;">
+            
+            <div class="input-group mb-3">
+              <input type="number" class="form-control" placeholder="Min $" aria-label="Min price" aria-describedby="basic-addon2" style="height: 37px; " min="1" required="" name="Min_price">
+              <input type="number" class="form-control" placeholder="Max $" aria-label="Max price" aria-describedby="basic-addon2" style="height: 37px; " min="2" required="" name="Max_price">
+              <div class="input-group-append">
+                <button class="btn btn-primary" style="box-shadow: 0px 0px 0px #a6a6a6;  height: 37px;" type="submit">Search</button>
+              </div>
+            </div>
+          
+          </div> 
+          </form>
+
+          <form action = "http://localhost:5000/search_food" method = "POST">
+          <div class="btn-group " style="margin-top: 21px; padding: 5px;">
+            
+            <div class="input-group mb-3">
+              
+              
+                
+                <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2" style="height: 37px;" name="search_food">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" style="box-shadow: 0px 0px 0px #a6a6a6;  height: 37px;" type="submit">Search</button>
+                
+                </div>
+              
+            </div>
+            </div>
+          
+          </div>
+          </form>
+
+      
+        </nav>
+
+  <!-- content -->
+  <div class="row ">
+    <div class="col-12" >
+      
+    </div>
+  </div>
+  
+  
+  
+  <br>
+
+  <div class="row ">
+
+    <div class="col-12" >
+      <h2 id="heading_pd" style="color: red">{{error}}</h2>
+      <h2 id="heading_pd">{{food_filter}}</h2>
+      
+      <div id="list_of_product">
+      {% for item in food_list %}
+      
+      <div class="product"  style="padding: 5px;">
+        <div class="row">
+          <div class="col-sm-4 col-xl-2  ">
+            <img src="/static/img/product/{{item[0]}}.jpeg" class="product_photo" style=" height: 100% ;width:100%; max-width: 200px; max-height: 200px">
+          </div>
+          <div class="col-sm-8 col-xl-10  ">
+        
+    
+            
+              <tr>
+                <td><h5>Product ID: {{item[0]}}</h5></td>
+                <td><h4 style="font-weight: bold">{{item[1]}}</h4></td>
+                <td><h6>Brand: {{item[2]}}</h6></td>
+                <td><h6>Drink catagory: {{item[6]}}</h6></td>
+                <td><h6>In stock: {{item[4]}}</h6></td>
+                <td><h5 style="font-weight: bold;color:#0039e6">Price: ${{item[3]}}</h5></td>
+                <form action = "http://localhost:5000/purchase_food" method = "POST">
+                  <button class="btn btn-primary">Add to cart</button>&nbsp;
+                  
+                  <input type="number" name="product_quantity" class="Quantity_box"  min="1" max="10" placeholder="&nbsp;Quantity" style="padding-bottom : 5px">
+                  <input type="text" value="{{item[0]}}" name="product_id" class="product_id_text">
+                </form>
+              </tr>
+              <br>
+            
+          </div>
+        </div>
+      </div>
+      <br>
+        {% endfor %}
+          
+          
+          
+          
+
+      
+
+
+      
+    </div>
+  </div>
+    
+  </div>
+
+
+  
+  
+
+</div> 
+
+<!-- Footer -->
+<div class="main_body ">
+<footer class="page-footer font-small container-fluid" style="background-color:#cccccc; color:#4d4d4d" >
+  
+  <div class="row" style="padding-left: 5px">
+    <div class = "col-2" style="">
+     
+      
+    </div>
+     <div class = "col-2"> 
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px;">Purchase</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/drink" method = "POST" >Drink</a><br>
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/food" method = "POST" >Food</a><br>
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">Account</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/profile_page" method = "POST">My account</a><br>
+      
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/shopping_cart" method = "POST" >Shopping cart</a><br>
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">About us</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/aboutus" method = "POST">About us & Guide</a><br>
+        
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">News</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/" >Recent update</a><br>
+        
+      </p>
+    </div>
+    <div class = "col-2" style="">
+     
+      
+    </div>
+  </div>
+  
+  
+
+</footer>
+</div>
+
+<button class="float_btn btn-secondary"  onclick="gototop()">^</button>
+
+<footer class="page-footer font-small " style="background-color:#002769; color:white;font-size:12px">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright: VincentStore
+  </div>
+  
+
+</footer>
+<!-- Footer -->
+</div>
+
+
+<script type="text/javascript">
+  
+ 
+
+  $(".product_id_text").hide();
+
+
+
+  function gototop() {
+    $("html, body").animate({ scrollTop: 0 }, 300);
+  
+}
+  
+  
+</script>
+
+</body>
+
+
+</html>
