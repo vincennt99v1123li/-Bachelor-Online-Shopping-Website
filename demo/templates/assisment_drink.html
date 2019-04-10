@@ -180,7 +180,7 @@
           <div class="col-sm-4 col-xl-2  ">
             <img src="/static/img/product/{{item[0]}}.jpeg" class="product_photo" style=" height: 100% ;width:100%; max-width: 200px; max-height: 200px">
           </div>
-          <div class="col-sm-8 col-xl-10  ">
+          <div class="col-sm-8 col-xl-10  " id= {{item[0]}}>
         
     
             
@@ -224,6 +224,14 @@
   
 
 </div> 
+
+<div id="scroll">
+{% if scroll %}
+<script>
+    
+    document.location.hash = '#' + '{{ scroll }}';
+</script>
+{% endif %}
 
 <!-- Footer -->
 <div class="main_body ">

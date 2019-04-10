@@ -69,8 +69,10 @@
     <nav class="navbar sticky-top navbar-expand-* navbar-dark "  style="background-color: rgba(0,0,0,0.82);  border-radius:5px; padding: 5px; box-shadow: 1px 1px 5px #b3b3b3;  ">
 
       <a class="navbar-brand" style="color:white; padding: 5px"id="filter_bar_head"  >Total: ${{sum}}</a>
+
       <form action = "http://localhost:5000/receipt" method = "POST">
-        <button class=" btn  btn-primary" type="submit"  style="box-shadow: 1px 1px 5px #333333;" >Pay</button>
+        <button class=" btn  btn-primary" type="submit" id="pay_btn" style="box-shadow: 1px 1px 5px #333333;" >Pay</button>
+        <input type="number" class="form-control" min="0" max="99999999" oninput="phone_check()" id="price_tl" name="price_tl" required step="0.01" value="{{sum}}">
       </form>
        
     </nav>
@@ -79,19 +81,22 @@
 
   <!-- content -->
   
+
   <br>
   
   <div class="row " style="padding: 5px">
     
 
     <div class="col-12" >
-      
+      <h1 style="color: red">{{error}}</h1>
       <h2 id="heading_pd">Products</h2>
+      
+    
       <div id="list_of_product">
       
-     
-      
-      </div>
+  
+
+   
       
       {% for item in pd_list %}
       
@@ -215,9 +220,15 @@
 <script type="text/javascript">
   
  
+
   $(".product_id_text").hide();
+  $("#price_tl").hide();
+
  
+
+
   function gototop() {
+   
     $("html, body").animate({ scrollTop: 0 }, 300);
   
 }

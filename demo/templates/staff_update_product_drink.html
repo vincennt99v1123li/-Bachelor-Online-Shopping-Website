@@ -46,11 +46,17 @@
        
           <a class="dropdown-item" href="http://localhost:5000/staff_food" method = "POST">Food</a>
 
-          <a class="dropdown-item" href="http://localhost:5000/staff_update_new" method = "POST">New</a>
+          <a class="dropdown-item" href="http://localhost:5000/staff_update_new" method = "POST">New product</a>
+
+           <a class="dropdown-item" href="http://localhost:5000/staff_image_new" method = "POST">New photo</a>
         
       </div>
     </li>
-    
+    <li class="nav-item">
+      
+       <a class="nav-link" style="color:white"  href="http://localhost:5000/staff_delivery_page" method = "POST">Delivery</a>
+     
+    </li>
     </UL>
     <div class=" navbar-collapse w-100 order-3 dual-collapse2" id="collapsibleNavbar">
       <ul class="navbar-nav ml-auto">
@@ -170,41 +176,44 @@
      
       
     </div>
-     <div class = "col-2"> 
+     
+     <div class = "col-2">
       <p></p>
-      <p style="font-weight: bold; font-size: 12px;">Purchase</p>
+      <p style="font-weight: bold; font-size: 12px">Orders</p>
       <p style="font-size: 12px">
-        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/drink" method = "POST" >Drink</a><br>
-        <a class="" style="color:#4d4d4d" href="http://localhost:5000/food" method = "POST" >Food</a><br>
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/staff_order_page" method = "POST">All</a><br>
+      
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/staff_order_page_drink" method = "POST" >Drink</a><br>
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/staff_order_page_food" method = "POST" >Food</a><br>
+      </p>
+    </div>
+     <div class = "col-2">
+      <p></p>
+      <p style="font-weight: bold; font-size: 12px">Products</p>
+      <p style="font-size: 12px">
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/staff_drink" method = "POST">Drink</a><br>
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/staff_food" method = "POST">Food</a><br>
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/staff_update_new" method = "POST">New product</a><br>
+        <a class="" style="color:#4d4d4d" href="http://localhost:5000/staff_image_new" method = "POST">New photo</a><br>
       </p>
     </div>
      <div class = "col-2">
       <p></p>
       <p style="font-weight: bold; font-size: 12px">Account</p>
       <p style="font-size: 12px">
-        <a class="" style="color:#4d4d4d" href="http://localhost:5000/profile_page" method = "POST">My account</a><br>
-      
-        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/shopping_cart" method = "POST" >Shopping cart</a><br>
-      </p>
-    </div>
-     <div class = "col-2">
-      <p></p>
-      <p style="font-weight: bold; font-size: 12px">About us</p>
-      <p style="font-size: 12px">
-        <a class="" style="color:#4d4d4d" href="http://localhost:5000/aboutus" method = "POST">About us & Guide</a><br>
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/staff_profile_page" >Profile</a><br>
         
       </p>
     </div>
-     <div class = "col-2">
+      <div class = "col-2">
       <p></p>
-      <p style="font-weight: bold; font-size: 12px">News</p>
+      <p style="font-weight: bold; font-size: 12px">Delivery</p>
       <p style="font-size: 12px">
-        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/" >Recent update</a><br>
+        <a class="" style="color:#4d4d4d"  href="http://localhost:5000/staff_delivery_page" >Schedule</a><br>
         
       </p>
     </div>
     <div class = "col-2" style="">
-     
       
     </div>
   </div>
@@ -213,10 +222,12 @@
 
 </footer>
 </div>
-<footer class="page-footer font-small " style="background-color:#002769; color:white;font-size:12px">
+<footer class="page-footer font-small " style="background-color:#333333; color:white; font-size:12px">
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3"> © 2019 Copyright: VincentStore
+  <div class="footer-copyright text-center py-3">CONFIDENTIAL, FOR STAFF ONLY
+  </div>
+  <div class="footer-copyright text-center py-3">© 2019 Copyright: VincentStore
   </div>
   
 

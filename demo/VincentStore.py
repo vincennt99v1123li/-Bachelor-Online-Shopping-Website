@@ -1,11 +1,21 @@
+import os
 from flask import Flask, render_template, request, url_for, redirect, session
 from flask_mail import Mail, Message
+from werkzeug.utils import secure_filename
+
 app = Flask(__name__)
 app.secret_key = 'any random string'
 import pymysql
 import datetime
 
 
+
+
+UPLOAD_FOLDER = '/home/vin205/205CDE/demo/static/img/product'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 mail=Mail(app)
 
@@ -80,9 +90,17 @@ def receipt():
       time_p = datetime.datetime.now().time()
       date_p = datetime.datetime.now().date()
 
+
+      price_tl=request.form["price_tl"]
+
+      if float(price_tl)==0:
+         return render_template("assisment_shopping_cart.html",error="No product")
+
+
+
       db_delivery = pymysql.connect("localhost", "admin", "123456aaa", "ALL POS")
       with db_delivery.cursor() as cursor:
-         cursor.execute( """SELECT delivery_schdule  FROM Delivery """)
+         cursor.execute( """SELECT delivery_schedule  FROM Delivery """)
          delivery_list=(cursor.fetchall())
       db_delivery.close()
 
@@ -312,7 +330,40 @@ def drink_error():
       cursor.execute( """SELECT * from Product Where product_type = 'Drink' """)
       drink_list=(cursor.fetchall())
      
-      return render_template("assisment_drink.html",drink_list =drink_list,  Drink_filter = "All",error="not enough stock")
+      return render_template("assisment_drink.html",drink_list =drink_list,  Drink_filter = "All",error="Not enough stock")
+   db.close()
+
+@app.route('/drink_error_login',methods = ['POST', 'GET'])
+def drink_error_login():
+   
+   db = pymysql.connect("localhost", "admin", "123456aaa", "ALL POS")
+   with db.cursor() as cursor:
+      cursor.execute( """SELECT * from Product Where product_type = 'Drink' """)
+      drink_list=(cursor.fetchall())
+     
+      return render_template("assisment_drink.html",drink_list =drink_list,  Drink_filter = "All",error="Please login")
+   db.close()
+
+@app.route('/food_error',methods = ['POST', 'GET'])
+def food_error():
+   
+   db = pymysql.connect("localhost", "admin", "123456aaa", "ALL POS")
+   with db.cursor() as cursor:
+      cursor.execute( """SELECT * from Product Where product_type = 'Food' """)
+      food_list=(cursor.fetchall())
+     
+      return render_template("assisment_food.html",food_list =food_list,  food_filter = "All",error="Not enough stock")
+   db.close()
+
+@app.route('/food_error_login',methods = ['POST', 'GET'])
+def food_error_login():
+   
+   db = pymysql.connect("localhost", "admin", "123456aaa", "ALL POS")
+   with db.cursor() as cursor:
+      cursor.execute( """SELECT * from Product Where product_type = 'Food' """)
+      food_list=(cursor.fetchall())
+     
+      return render_template("assisment_food.html",food_list =food_list,  food_filter = "All",error="Please login")
    db.close()
 
 @app.route('/tea',methods = ['POST', 'GET'])
@@ -453,6 +504,7 @@ def ice_cream():
 @app.route('/purchase_drink',methods = ['POST', 'GET'])
 def purchase_drink():
    if "Userid" in session:
+      redirect(url_for("login_page"))
       userid = session["Userid"]
       pid=request.form["product_id"]
       pqt=request.form["product_quantity"]
@@ -487,6 +539,7 @@ def purchase_drink():
          except:
 
             db.rollback() 
+            
         
          db.close()
          if success ==True:
@@ -500,13 +553,21 @@ def purchase_drink():
             except:
 
                db.rollback() 
-        
+               
             db.close()
 
+         db3 = pymysql.connect("localhost", "admin", "123456aaa", "ALL POS")
+         with db3.cursor() as cursor:
+            cursor.execute( """SELECT * from Product Where product_type = 'Drink' """)
+            drink_list=(cursor.fetchall())
+         db3.close
+
       
-         return redirect(url_for("drink"))
+         return render_template("assisment_drink.html",drink_list =drink_list,  Drink_filter = "All", scroll=pid)
       else:
          return redirect(url_for("drink_error"))
+   else:
+      return redirect(url_for("drink_error_login"))
 
 @app.route('/purchase_food',methods = ['POST', 'GET'])
 def purchase_food():
@@ -562,9 +623,18 @@ def purchase_food():
             db.close()
 
       
-         return redirect(url_for("food"))
+         db3 = pymysql.connect("localhost", "admin", "123456aaa", "ALL POS")
+         with db3.cursor() as cursor:
+            cursor.execute( """SELECT * from Product Where product_type = 'Food' """)
+            food_list=(cursor.fetchall())
+         db3.close
+
+      
+         return render_template("assisment_food.html",food_list =food_list,  food_filter = "All", scroll=pid)
       else:
-         return redirect(url_for("drink_error"))
+         return redirect(url_for("food_error"))
+   else:
+      return redirect(url_for("food_error_login"))
 
 
 
@@ -1342,6 +1412,16 @@ def staff_update_new():
    else:
       return redirect(url_for("staff"))
 
+@app.route('/staff_image_new',methods = ['POST', 'GET'])
+def staff_image_new():
+   if "Staffid" in session:
+      return render_template("staff_product_photo.html")
+   else:
+      return redirect(url_for("staff"))
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/staff_update_new_insert',methods = ['POST', 'GET'])
 def staff_update_new_insert():
@@ -1354,8 +1434,7 @@ def staff_update_new_insert():
          p_main_category=request.form["p_main_category"]
          pstock=request.form["pstock"]
          pprice=request.form["pprice"]
-
-
+        
 
          if p_main_category == "Drink":
             p_category=request.form["pcategory_drink"]
@@ -1397,6 +1476,77 @@ def staff_update_new_insert():
    else:
       return redirect(url_for("staff"))
 
+@app.route('/staff_photo_new_insert',methods = ['POST', 'GET'])
+def staff_photo_new_insert():
+   if "Staffid" in session:
+      if request.method == 'POST':
+         
+       
+         file = request.files['pic']
+
+         if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+         
+           
+        
+         
+      
+         return redirect(url_for("staff_profile_page"))
+   else:
+      return redirect(url_for("staff"))
+
+
+
+@app.route('/staff_delivery_page',methods = ['POST', 'GET'])
+def staff_delivery_page():
+   if "Staffid" in session:
+      
+      d_list=[]
+      d_date=0
+
+      db2 = pymysql.connect("localhost", "admin", "123456aaa", "ALL POS")
+      with db2.cursor() as cursor:
+         cursor.execute( """SELECT * from Delivery """)
+         d_list=(cursor.fetchall())
+           
+      db2.close()
+      for row in d_list:
+         d_date+=(int(row[0]))
+         
+
+      return render_template("staff_delivery_schedule.html",d_date =d_date)
+   else:
+      return redirect(url_for("staff"))
+
+@app.route('/staff_delivery',methods = ['POST', 'GET'])
+def staff_delivery():
+   if "Staffid" in session:
+      if request.method == 'POST':
+         d_date=request.form["d_date"]
+        
+
+         db = pymysql.connect("localhost", "admin", "123456aaa", "ALL POS")
+         cursor = db.cursor() 
+         sql="""UPDATE Delivery SET  delivery_schedule =%d"""\
+         %( int(d_date))
+         try:
+            cursor.execute(sql)
+            db.commit()
+           
+         except:
+
+            db.rollback() 
+         db.close()
+         
+
+         
+      
+
+      return redirect(url_for("staff_delivery_page"))
+   else:
+      return redirect(url_for("staff"))
 
 @app.route('/staff_login',methods = ['POST', 'GET'])
 def staff_login():
