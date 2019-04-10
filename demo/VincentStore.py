@@ -563,7 +563,7 @@ def purchase_drink():
          db3.close
 
       
-         return render_template("assisment_drink.html",drink_list =drink_list,  Drink_filter = "All", scroll=pid)
+         return redirect(url_for("shopping_cart"))
       else:
          return redirect(url_for("drink_error"))
    else:
@@ -630,7 +630,7 @@ def purchase_food():
          db3.close
 
       
-         return render_template("assisment_food.html",food_list =food_list,  food_filter = "All", scroll=pid)
+         return redirect(url_for("shopping_cart"))
       else:
          return redirect(url_for("food_error"))
    else:

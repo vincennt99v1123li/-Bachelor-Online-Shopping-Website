@@ -184,10 +184,10 @@
                 <td><h6>Drink catagory: {{item[6]}}</h6></td>
                 <td><h6>In stock: {{item[4]}}</h6></td>
                 <td><h5 style="font-weight: bold;color:#0039e6">Price: ${{item[3]}}</h5></td>
-                <form action = "http://localhost:5000/purchase_food" method = "POST">
+                <form action = "http://localhost:5000/purchase_food"  target="_blank" method = "POST">
                   <button class="btn btn-primary">Add to cart</button>&nbsp;
                   
-                  <input type="number" name="product_quantity" class="Quantity_box"  min="1" max="10" placeholder="&nbsp;Quantity" style="padding-bottom : 5px">
+                  <input type="number" name="product_quantity" class="Quantity_box" value="1" min="1" max="10" placeholder="&nbsp;Quantity" style="padding-bottom : 5px">
                   <input type="text" value="{{item[0]}}" name="product_id" class="product_id_text">
                 </form>
               </tr>
@@ -218,13 +218,7 @@
 
 </div> 
 
-<div id="scroll">
-{% if scroll %}
-<script>
-    
-    document.location.hash = '#' + '{{ scroll }}';
-</script>
-{% endif %}
+
 
 <!-- Footer -->
 <div class="main_body ">
